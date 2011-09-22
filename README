@@ -1,0 +1,11 @@
+jQuery socialTracker
+@author Vasken Hauri
+http://neverblog.net
+
+The jQuery socialTracker plugin aims to make it easier to include Google Analytics
+event tracking on your site. Google provides info about how to track Facebook and
+Twitter events here http://code.google.com/apis/analytics/docs/tracking/gaTrackingSocial.html
+
+@TODO: 
+- Add LinkedIn support
+- This is totally untested and you should NOT run it in anything remotely resembling a production environment
