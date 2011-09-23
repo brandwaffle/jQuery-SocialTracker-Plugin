@@ -31,14 +31,13 @@
 			return;
 		}
 
-		if( 'click' === action ) {
-			action = settings.tw_separate_clicks ? event.region : action;
-		}
-
 		try {
 			if(twttr && twttr.events) {
 				twttr.events.bind(action, function(event) {
 					if (event) {
+						if( 'click' === action && separate_clicks ) {
+							action = event.region;
+						}
 						var targetUrl;
 						if (event.target && event.target.nodeName == 'IFRAME') {
 							targetUrl = extractParamFromUri(event.target.src, 'url');
@@ -78,10 +77,11 @@
 							 }
 						 } catch(e) {}
 
-						 trackTwitter('tweet');
-						 trackTwitter('follow');
-						 trackTwitter('retweet');
-						 trackTwitter('favorite');
+						 trackTwitter( 'tweet' );
+						 trackTwitter( 'follow' );
+						 trackTwitter( 'retweet' );
+						 trackTwitter( 'favorite' );
+						 trackTwitter( 'click', settings.tw_separate_clicks );
 
 						 return 'Social tracking enabled';
 					 }
