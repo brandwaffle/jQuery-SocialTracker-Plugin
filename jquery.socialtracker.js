@@ -26,15 +26,47 @@
 		}
 	}
 
+	function trackTwitter(action, separate_clicks) {
+		if(!action) {
+			return;
+		}
+
+		if( 'click' === action ) {
+			action = settings.tw_separate_clicks ? event.region : action;
+		}
+
+		try {
+			if(twttr && twttr.events) {
+				twttr.events.bind(action, function(event) {
+					if (event) {
+						var targetUrl;
+						if (event.target && event.target.nodeName == 'IFRAME') {
+							targetUrl = extractParamFromUri(event.target.src, 'url');
+						}
+						_gaq.push(['_trackSocial', 'twitter', action, targetUrl]);
+					}
+				});
+			}
+		} catch(e) {}
+	}
+
 	var methods = {
 		init : function(options) { 
-						var settings = {
-							twitter: true,
-							facebook: true,
-						}
+						 var settings = {
+							 twitter: true,
+							 facebook: true,
+						 	 tw_events: {
+								tweet: true,
+								follow: true,
+								retweet: true,
+								favorite: true,
+								click: true
+							 },
+							 tw_separate_clicks: false
+						 }
 
 						 options = $.extend(options, settings);
-						 
+
 						 try {
 							 if(FB && FB.Event && FB.Event.subscribe) {
 								 FB.Event.subscribe('edge.create', function(targetUrl) {
@@ -46,21 +78,12 @@
 							 }
 						 } catch(e) {}
 
-						 try {
-							 if(twttr && twttr.events) {
-								 twttr.events.bind('tweet', function(event) {
-									 if (event) {
-										 var targetUrl;
-										 if (event.target && event.target.nodeName == 'IFRAME') {
-											 targetUrl = extractParamFromUri(event.target.src, 'url');
-										 }
-										 _gaq.push(['_trackSocial', 'twitter', 'tweet', targetUrl]);
-									 }
-								 });
-							 }
-						 } catch(e) {}
-					 
-						return 'Social tracking enabled';
+						 trackTwitter('tweet');
+						 trackTwitter('follow');
+						 trackTwitter('retweet');
+						 trackTwitter('favorite');
+
+						 return 'Social tracking enabled';
 					 }
 	};
 
