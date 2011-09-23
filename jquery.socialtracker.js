@@ -51,40 +51,40 @@
 
 	var methods = {
 		init : function(options) { 
-						 var settings = {
-							 twitter: true,
-							 facebook: true,
-						 	 tw_events: {
-								tweet: true,
-								follow: true,
-								retweet: true,
-								favorite: true,
-								click: true
-							 },
-							 tw_separate_clicks: false
-						 }
+			 var settings = {
+				 twitter: true,
+				 facebook: true,
+				 tw_events: {
+					 tweet: true,
+					 follow: true,
+					 retweet: true,
+					 favorite: true,
+					 click: true
+				 },
+				 tw_separate_clicks: false
+			 }
 
-						 options = $.extend(options, settings);
+			 options = $.extend(options, settings);
 
-						 try {
-							 if(FB && FB.Event && FB.Event.subscribe) {
-								 FB.Event.subscribe('edge.create', function(targetUrl) {
-									 _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
-								 });
-								 FB.Event.subscribe('message.send', function(targetUrl) {
-									 _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
-								 });
-							 }
-						 } catch(e) {}
+			 try {
+				 if(FB && FB.Event && FB.Event.subscribe) {
+					 FB.Event.subscribe('edge.create', function(targetUrl) {
+						 _gaq.push(['_trackSocial', 'facebook', 'like', targetUrl]);
+					 });
+					 FB.Event.subscribe('message.send', function(targetUrl) {
+						 _gaq.push(['_trackSocial', 'facebook', 'send', targetUrl]);
+					 });
+				 }
+			 } catch(e) {}
 
-						 trackTwitter( 'tweet' );
-						 trackTwitter( 'follow' );
-						 trackTwitter( 'retweet' );
-						 trackTwitter( 'favorite' );
-						 trackTwitter( 'click', settings.tw_separate_clicks );
+			 trackTwitter( 'tweet' );
+			 trackTwitter( 'follow' );
+			 trackTwitter( 'retweet' );
+			 trackTwitter( 'favorite' );
+			 trackTwitter( 'click', settings.tw_separate_clicks );
 
-						 return 'Social tracking enabled';
-					 }
+			 return 'Social tracking enabled';
+		 }
 	};
 
 	$.fn.socialTracker = function( method ) {
