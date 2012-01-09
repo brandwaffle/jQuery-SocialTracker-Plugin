@@ -10,6 +10,9 @@ To track clicks on a particular element, simply call the following function:
 
 jQuery(element).socialTracker();
 
+Default options can be overridden by passing new params into the socialTracker method as an object.
+The defaults are as listed below:
+
 var settings = {
 				 twitter: true,
 				 facebook: true,
