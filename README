@@ -6,6 +6,10 @@ The jQuery socialTracker plugin aims to make it easier to include Google Analyti
 event tracking on your site. Google provides info about how to track Facebook and
 Twitter events here http://code.google.com/apis/analytics/docs/tracking/gaTrackingSocial.html
 
+To track clicks on a particular element, simply call the following function:
+
+jQuery(element).socialTracker();
+
 var settings = {
 				 twitter: true,
 				 facebook: true,
