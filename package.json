@@ -1,0 +1,34 @@
+{
+    "name": "socialTracker",
+    "version": "0.1b",
+    "title": "jQuery.socialTracker()",
+    "author": {
+        "name": "Vasken Hauri",
+        "url": "https://github.com/brandwaffle"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "MIT-LICENSE.txt"
+        },
+        {
+            "type": "GPLv2",
+            "url": "GPL-LICENSE.txt"
+        }
+    ],
+    "dependencies": {
+        "jquery": "1"
+    },
+    "description": "The main purpose of this plugin is to easily add social tracking through Google Analytics",
+    "keywords": [
+        "social",
+        "facebook",
+        "twitter"
+    ],
+    "homepage": "https://github.com/brandwaffle/jQuery-SocialTracker-Plugin",
+    "maintainers": [
+    ],
+    "files": [
+        "jquery.socialtracker.js"
+    ]
+}
